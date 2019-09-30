@@ -15,7 +15,10 @@
 </template>
 
 <script>
+import { apiKey } from '~/env.js'
 import axios from 'axios'
+axios.defaults.headers.common['Authorization'] = `Bearer ${apiKey}`
+
 import Logo from '~/components/Logo.vue'
 import UserCard from '~/components/UserCard.vue'
 import UserDetails from '~/components/UserDetails.vue'
@@ -30,10 +33,12 @@ export default {
   },
   methods: {
     search() {
-      return axios.get(`https://api.github.com/search/users?q=${this.searchTerm}`)
-      .then((res) => {
-        this.searchResult = res.data.items
-      })
+      if (this.searchTerm !== '') {
+        return axios.get(`https://api.github.com/search/users?q=${this.searchTerm}`)
+        .then((res) => {
+          this.searchResult = res.data.items
+        })
+      }
     },
     setUser(user) {
       this.selectedUser = user;

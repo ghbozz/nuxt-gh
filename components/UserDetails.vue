@@ -20,8 +20,9 @@
 </template>
 
 <script>
+  import { apiKey } from '~/env.js'
   import axios from 'axios'
-  axios.defaults.headers.common['Authorization'] = 'Bearer ed16d91d2fb5ec08556f6119d9ef33f651cbcb6e'
+  axios.defaults.headers.common['Authorization'] = `Bearer ${apiKey}`
 
   export default {
     props: ['user'],
@@ -37,11 +38,7 @@
         this.resetData();
         return axios({
           method: "get",
-          url: `https://api.github.com/users/${this.user.login}/repos`,
-          headers: {
-              Authorization: `Bearer ed16d91d2fb5ec08556f6119d9ef33f651cbcb6e`,
-              "Content-Type": "application/json"
-          }
+          url: `https://api.github.com/users/${this.user.login}/repos`
           })
           .then(res => {
             this.repos = res.data.map(repo => repo.name)
@@ -71,11 +68,7 @@
       getDetails() {
         return axios({
           method: "get",
-          url: `https://api.github.com/users/${this.user.login}`,
-          headers: {
-              Authorization: `Bearer ed16d91d2fb5ec08556f6119d9ef33f651cbcb6e`,
-              "Content-Type": "application/json"
-          }
+          url: `https://api.github.com/users/${this.user.login}`
           })
           .then(res => {
             this.details = res.data

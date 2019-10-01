@@ -2,6 +2,7 @@
   <div class="user-details">
     <div class="top-details">
       <img class="user-picture" :src="user.avatar_url" alt="">
+      <a :href="'https://github.com/' + user.login" target="_blank">GitHub</a>
       <div v-if="details" class="user-infos">
         <span>Name: {{ details.name }}</span>
         <span>Website: {{ details.blog }}</span>

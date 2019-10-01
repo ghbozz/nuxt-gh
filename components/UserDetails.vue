@@ -1,48 +1,22 @@
 <template>
-  <div class="user-details">
-    <div class="top-details">
-      <img class="user-picture" :src="user.avatar_url" alt="">
-      <div v-if="details" class="user-infos">
-        <span v-if="details.name"><strong>Name:</strong> {{ details.name }}</span>
-        <span v-if="details.location"><strong>Location:</strong> {{ details.location }}</span>
-        <span v-if="details.blog"><strong>Website:</strong> {{ details.blog }}</span>
-        <span><strong>Public Repos:</strong> {{ details.public_repos }}</span>
-        <span><strong>Followers:</strong> {{ details.followers }}</span>
-        <span><strong>Following:</strong> {{ details.following }}</span>
-      </div>
-      <a class="github-link" :href="'https://github.com/' + user.login" target="_blank"><i class="devicon-github-plain"></i></a>
-    </div>
-    <div class="bottom-details">
-      <div class="columns is-mobile is-multiline" v-if="stats">
-        <div class="column is-half" v-for="(key, value) in stats" v-if="icons[value]">
-          <div class="lang-card">
-            <i :class="`devicon-${icons[value]}-plain colored`"></i>
-            <div>
-              <span class="lang-name"><strong>{{ value }}</strong></span>
-              <br>
-              <span class="lang-score">{{ key / 1000 }} <strong>KB</strong></span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <app-loader v-if="Object.keys(stats).length === 0"></app-loader>
-    </div>
+  <div v-if="details" class="user-details">
+    <app-main-user-infos :details="details" :user="user"></app-main-user-infos>
+    <app-lang v-if="stats" :stats="stats"></app-lang>
   </div>
 </template>
 
 <script>
-  import { icons } from '~/icons.js'
   import { apiKey } from '~/env.js'
   import axios from 'axios'
   axios.defaults.headers.common['Authorization'] = `Bearer ${apiKey}`
 
-  import Loader from '~/components/Loader.vue'
+  import MainUserInfos from '~/components/MainUserInfos.vue'
+  import Lang from '~/components/Lang.vue'
 
   export default {
     props: ['user'],
     data() {
       return {
-        icons: icons,
         repos: [],
         stats: {},
         details: null
@@ -108,15 +82,17 @@
       this.getRepos();
     },
     components: {
-      appLoader: Loader
+      appLoader: Loader,
+      appMainUserInfos: MainUserInfos,
+      appLang: Lang
     }
   }
 </script>
 
-<style scoped>
+<style>
   .user-picture {
     width: 200px;
-    margin-right: 40px;
+    margin-right: 10px;
   }
 
   .user-details {
@@ -132,17 +108,36 @@
     display: flex;
     flex-direction: column;
     font-size: 1.1em;
+    padding: 20px;
   }
 
   .top-details {
     position: relative;
-    margin-bottom: 64px;
+    margin-bottom: 32px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
     background-color: rgb(255, 252, 242);
     color: black;
+    border-radius: 10px;
+    -webkit-box-shadow: 1px 2px 18px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 1px 2px 18px 0px rgba(0,0,0,0.2);
+    box-shadow: 1px 2px 18px 0px rgba(0,0,0,0.2);
+  }
+
+  .socials-stats {
+    margin-bottom: 32px;
+  }
+
+  .social-card {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(255, 252, 242);
     border-radius: 10px;
     -webkit-box-shadow: 1px 2px 18px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 1px 2px 18px 0px rgba(0,0,0,0.2);

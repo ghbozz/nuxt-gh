@@ -5,7 +5,7 @@
         <app-user-details v-if="selectedUser" :user="selectedUser"></app-user-details>
       </div>
       <div class="right-scene">
-        <input @change="search" class="search-bar" type="text" placeholder="Search user" v-model="searchTerm">
+        <input @change="search" class="search-bar" type="text" placeholder="search users on github" v-model="searchTerm">
         <div class="columns is-multiline is-mobile">
           <app-user-card v-for="user in searchResult" :user="user" @click.native="setUser(user)"></app-user-card>
         </div>
@@ -71,6 +71,7 @@ export default {
   }
 
   .right-scene {
+    overflow: scroll;
     position: absolute;
     top: 0;
     right: 0;
@@ -78,13 +79,22 @@ export default {
     height: 100%;
     width: 60%;
     background-color: rgb(255, 252, 242);
+    -webkit-box-shadow: inset -2px 2px 18px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: inset -2px 2px 18px 0px rgba(0,0,0,0.2);
+    box-shadow: inset -2px 2px 18px 0px rgba(0,0,0,0.2);
   }
 
   .search-bar {
     height: 64px;
     width: 100%;
-    font-size: 36px;
-    margin-top: 24px;
+    padding: 0px 15px;
+    font-size: 28px;
     margin-bottom: 24px;
+    border-radius: 50px;
+    border: 1px solid rgba(30,30,30,0.1);
+  }
+
+  .search-bar:focus {
+    outline: none;
   }
 </style>

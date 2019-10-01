@@ -5,7 +5,7 @@
         <app-user-details v-if="selectedUser" :user="selectedUser"></app-user-details>
       </div>
       <div class="right-scene">
-        <input @keyup="search" class="search-bar" type="text" placeholder="Search user" v-model="searchTerm">
+        <input @change="search" class="search-bar" type="text" placeholder="Search user" v-model="searchTerm">
         <div class="columns is-multiline is-mobile">
           <app-user-card v-for="user in searchResult" :user="user" @click.native="setUser(user)"></app-user-card>
         </div>

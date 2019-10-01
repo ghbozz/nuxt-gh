@@ -12,14 +12,24 @@
       </div>
     </div>
     <div class="bottom-details">
-      <ul>
-        <li class="lang" v-for="(key, value) in stats">{{ key }} / {{ value }}</li>
-      </ul>
+      <div class="columns is-mobile is-multiline">
+        <div class="column is-half" v-for="(key, value) in stats" v-if="icons[value]">
+          <div class="lang-card">
+            <i :class="`devicon-${icons[value]}-plain`"></i>
+            <div>
+              <span class="lang-name">{{ value }}</span>
+              <br>
+              <span class="lang-score">{{ key }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import { icons } from '~/icons.js'
   import { apiKey } from '~/env.js'
   import axios from 'axios'
   axios.defaults.headers.common['Authorization'] = `Bearer ${apiKey}`
@@ -28,6 +38,7 @@
     props: ['user'],
     data() {
       return {
+        icons: icons,
         repos: [],
         stats: {},
         details: null
@@ -120,6 +131,20 @@
     justify-content: flex-start;
     width: 100%;
     color: rgb(255, 252, 242);
+  }
+
+  .lang-card {
+    background-color: rgb(255, 252, 242);
+    padding: 20px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+  }
+
+  .lang-card i {
+    font-size: 4em;
+    margin-right: 20px;
   }
 
   .lang {

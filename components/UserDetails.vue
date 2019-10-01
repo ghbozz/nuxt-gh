@@ -4,8 +4,8 @@
       <img class="user-picture" :src="user.avatar_url" alt="">
       <div v-if="details" class="user-infos">
         <span v-if="details.name"><strong>Name:</strong> {{ details.name }}</span>
-        <span v-if="details.blog"><strong>Website:</strong> {{ details.blog }}</span>
         <span v-if="details.location"><strong>Location:</strong> {{ details.location }}</span>
+        <span v-if="details.blog"><strong>Website:</strong> {{ details.blog }}</span>
         <span><strong>Public Repos:</strong> {{ details.public_repos }}</span>
         <span><strong>Followers:</strong> {{ details.followers }}</span>
         <span><strong>Following:</strong> {{ details.following }}</span>

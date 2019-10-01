@@ -56,7 +56,10 @@
           url: `https://api.github.com/users/${this.user.login}/repos`
           })
           .then(res => {
-            this.repos = res.data.map(repo => repo.name)
+            this.repos = res.data.filter((item) => {
+              return item.fork === false
+            })
+            this.repos = this.repos.map(repo => repo.name)
             this.getStats()
           })
       },

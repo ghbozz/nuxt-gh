@@ -3,11 +3,16 @@
     <div class="custom-container">
       <div class="left-scene">
         <app-user-details v-if="selectedUser" :user="selectedUser"></app-user-details>
+        <i v-else class="devicon-github-plain github-logo"></i>
       </div>
       <div class="right-scene">
-        <input @change="search" class="search-bar" type="text" placeholder="search users on github" v-model="searchTerm">
-        <div class="columns is-multiline is-mobile">
+        <input @change="search" class="search-bar" type="text" placeholder="search..." v-model="searchTerm">
+        <div v-if="searchResult.length > 0" class="columns is-multiline is-mobile">
           <app-user-card v-for="user in searchResult" :user="user" @click.native="setUser(user)"></app-user-card>
+        </div>
+        <div v-else class="welcome">
+          <h1 class="title">GH Stats</h1>
+          <h1 class="subtitle">a simple tool to get your personal stats on GitHub</h1>
         </div>
       </div>
     </div>
@@ -60,6 +65,8 @@ export default {
 
   .left-scene {
     position: fixed;
+    top: 0;
+    left: 0;
     padding: 40px;
     height: 100%;
     width: 40%;
@@ -90,11 +97,34 @@ export default {
     padding: 0px 15px;
     font-size: 28px;
     margin-bottom: 24px;
-    border-radius: 50px;
+    border-radius: 10px;
     border: 1px solid rgba(30,30,30,0.1);
   }
 
   .search-bar:focus {
     outline: none;
+  }
+
+  .welcome {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .welcome .title {
+    font-size: 3em;
+  }
+
+  .welcome .subtitle {
+    font-size: 1.5em;
+  }
+
+  .github-logo {
+    color: rgb(255, 252, 242);
+    font-size: 10em;
   }
 </style>

@@ -31,3 +31,41 @@
     }
   }
 </script>
+
+<style>
+  .bottom-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lang-card {
+    background-color: rgb(255, 252, 242);
+    padding: 20px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    -webkit-box-shadow: 1px 2px 18px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 1px 2px 18px 0px rgba(0,0,0,0.2);
+    box-shadow: 1px 2px 18px 0px rgba(0,0,0,0.2);
+  }
+
+  .lang-card i {
+    font-size: 4em;
+    margin-right: 20px;
+  }
+
+  .lang {
+    color: rgb(255, 252, 242);
+    font-size: 1.2em;
+  }
+
+  .column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+</style>

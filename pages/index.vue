@@ -125,6 +125,6 @@ export default {
 
   .github-logo {
     color: rgb(255, 252, 242);
-    font-size: 10em;
+    font-size: 20em;
   }
 </style>

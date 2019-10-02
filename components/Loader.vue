@@ -1,15 +1,16 @@
 <template>
-  <div style="margin-top: 60px">
+  <div style="margin-top: 60px; position: relative;">
+    <i class="devicon-github-plain github-logo"></i>
     <div class='loader loader1'>
       <div>
         <div>
-          <div>
-            <div>
-              <div>
-                <div></div>
-              </div>
-            </div>
-          </div>
+          <!-- <div> -->
+            <!-- <div> -->
+              <!-- <div> -->
+                <!-- <div></div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+          <!-- </div> -->
         </div>
       </div>
     </div>
@@ -17,6 +18,16 @@
 </template>
 
 <style scoped>
+  .github-logo {
+    z-index: 10;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    font-size: 6.5em;
+    color: rgb(255, 252, 242);
+  }
+
   @-webkit-keyframes rotate {
     0% {
       -webkit-transform: rotate(0deg);
@@ -54,7 +65,7 @@
     50% {
       -webkit-transform: rotate(180deg);
               transform: rotate(180deg);
-      border-top-color: rgb(76, 126, 168);
+      border-top-color: rgb(65, 184, 131);
     }
     100% {
       -webkit-transform: rotate(360deg);
@@ -71,7 +82,7 @@
     50% {
       -webkit-transform: rotate(180deg);
               transform: rotate(180deg);
-      border-top-color: rgb(76, 126, 168);
+      border-top-color: rgb(65, 184, 131);
     }
     100% {
       -webkit-transform: rotate(360deg);
@@ -122,55 +133,6 @@
     -webkit-animation: rotate linear 3.5s infinite;
             animation: rotate linear 3.5s infinite;
     border-top-color: rgb(255, 252, 242);
-    border-bottom-color: rgb(76, 126, 168);
-  }
-
-  /*loader 2  */
-  .loader2, .loader2 div {
-    border-radius: 50%;
-    padding: 8px;
-    border: 2px solid transparent;
-    -webkit-animation: rotate linear 3.5s infinite;
-            animation: rotate linear 3.5s infinite;
-    border-top-color: rgb(76, 126, 168);
-    border-left-color: rgb(255, 252, 242);
-    border-right-color: rgb(255, 252, 242);
-  }
-
-  /*loader 3  */
-  .loader3, .loader3 div {
-    border-radius: 50%;
-    padding: 8px;
-    border: 2px solid transparent;
-    -webkit-animation: rotate linear 3.5s infinite;
-            animation: rotate linear 3.5s infinite;
-    border-top-color: rgb(255, 252, 242);
-    border-left-color: rgb(76, 126, 168);
-    -webkit-animation-timing-function: cubic-bezier(0.55, 0.38, 0.21, 0.88);
-            animation-timing-function: cubic-bezier(0.55, 0.38, 0.21, 0.88);
-    -webkit-animation-duration: 3s;
-            animation-duration: 3s;
-  }
-
-  /* loader 4 */
-  .loader4, .loader4 div {
-    border-radius: 50%;
-    padding: 8px;
-    border: 2px solid transparent;
-    -webkit-animation: rotate linear 3.5s infinite;
-            animation: rotate linear 3.5s infinite;
-    border-radius: 50%;
-    padding: 4px;
-    -webkit-animation: rotate2 4s infinite linear;
-            animation: rotate2 4s infinite linear;
-  }
-
-  div:hover {
-    -webkit-animation-play-state: paused;
-            animation-play-state: paused;
-  }
-
-  .loader, .loader * {
-    will-change: transform;
+    border-bottom-color: rgb(65, 184, 131);
   }
 </style>
